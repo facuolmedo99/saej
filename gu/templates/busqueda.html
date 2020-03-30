@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block barlinks %}
+  <li class="nav-item">
+      <a class="nav-link text-muted active" href="/busqueda/">Mis Expedientes</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link text-muted" href="#">Equipo</a>
+  </li>
+
+  <!-- Dropdown -->
+  
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle   text-muted" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacto</a>
+      <div class="dropdown-menu dropdown-primary font-weight-bold" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item text-muted" href="#">Acerca de Nosotros</a>
+          <a class="dropdown-item text-muted" href="#">Ayuda</a>
+          <a class="dropdown-item text-muted" href="#">Soporte</a>
+      </div>
+  </li>
+{% endblock %}
+
+{% block user %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-user"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+      aria-labelledby="navbarDropdownMenuLink-333">
+      <a class="dropdown-item" href="#">Mi cuenta</a>
+      <a class="dropdown-item" style="color: black;" href="/logout/">Cerrar Sesión</a>
+    </div>
+  </li>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+  <!-- Buscar -->
+  <div class="row z-depth-1 mt-3" style="background: white; width: fit-content; height: fit-content;">
+    <div class="form-inline ml-3 mt-1 mb-0 md-form">
+      <i class="fas fa-search" aria-hidden="true"></i>
+      <input class="form-control ml-3 w-75" type="text" placeholder="Buscar"
+        aria-label="Search" id = "tableSearch">
+    </div>
+  </div>
+  <!-- Buscar -->
+
+  <!-- Tabla Expedientes -->
+  <div class="row z-depth-1 mt-4 p-0" style="background:white;">
+    
+    <table id="dtBasicExample" class=" table table-bordered table-hover" cellspacing="0">
+      <thead class="view overlay">
+        <tr>
+          <th class="th-sm">Numero
+          </th>
+          <th class="th-sm">Auto
+          </th>
+          <th class="th-sm">Archivos
+          </th>
+        </tr>
+      </thead>
+      
+        <tbody style="cursor: pointer;">
+          
+            {% for exp in expedientes %}
+            
+            <div>
+                <tr>
+                  <td>{{exp.numero}}</td>
+                  <td>{{exp.nombre}}</td>
+                  <td>-</td>
+                </tr>
+            </div>
+            
+            {% endfor %}
+           
+        </tbody>      
+    </table>
+  </div>
+  <!-- Tabla Expedientes -->
+</div>
+
+<!-- 
+<div class="container z-depth-2 mt-5">
+  <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="th-sm">Numero
+        </th>
+        <th class="th-sm">Auto
+        </th>
+        <th class="th-sm">Partes
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for exp in expedientes %}
+        <tr>
+          <th scope="row">{{exp.id}}</th>
+          <td>{{exp.numero}}</td>
+          <td>{{exp.nombre}}</td>
+          <td>-</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div> --> 
+<!-- <div class="im">
+  <div class="container custom_container mx-auto">
+    <form action="/resultado/" method="GET" class="cf">
+      <div class="form-inline custom_form">
+        <h4 class="t1">N°</h4>
+        <input type="text" class="form-control" name="nmr" aria-describedby="emailHelp" placeholder="Numero de expediente">
+        <button type="submit" class="btn btn-primary mb-2 custom_btn">Buscar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<br><br> -->
+{% endblock %}
+ 

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container-sm mw-50" style="max-width: 450px;">
+  <form method="POST" action=""> {% csrf_token %}
+    <section class="form-simple">
+      <!--Form with header-->
+      <div class="card mt-4">
+        <!--Header-->
+        <div class="header pt-3 grey lighten-2">
+    
+          <div class="row d-flex justify-content-start">
+            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Inicia Sesión</h3>
+          </div>
+    
+        </div>
+        <!--Header-->
+    
+        <div class="card-body mx-4 mt-4">
+    
+          <!--Body-->
+          <div class="md-form">
+            <div class="input-group-append">
+              <span class="input-group-text mb-2"><i class="fas fa-user"></i></span>
+              <input type="text"id="Form-email4" name="username" placeholder="Usuario" class="form-control pl-3">
+            </div>
+          </div>
+    
+          <div class="md-form pb-0">
+            <div class="input-group-append">
+              <span class="input-group-text mb-2"><i class="fas fa-key"></i></span>
+              <input type="password"id="Form-pass44" name="password" placeholder="Contraseña" class="form-control pl-3">
+            </div>
+
+            <p class="font-small d-flex justify-content-start"><a href="#"
+                class="dark-grey-text ml-1 mt-2 ">Olvidaste tu contraseña?</a></p>
+          </div>
+          <div class="mt-0 mb-4">
+              {% for message in messages %}
+          
+              <div class="container border mes" >
+                <p class="messages">{{message}}</p>
+              </div>
+          
+              {% endfor %}
+          </div>
+          <div class="text-center mb-4">
+            <button type="submit" class="btn btn-warning btn-block z-depth-2">Iniciar Sesión</button>
+          </div>
+          <p class="font-small grey-text d-flex justify-content-center">No tenés una cuenta? <a href="/register/"
+              class="dark-grey-text font-weight-bold ml-1"> Registrate</a></p>
+    
+        </div>
+      </div>
+      <!--/Form with header-->
+    </section>
+  </form>
+</div>
+{% endblock %}
+ 
+
+<!-- 
+<div class="card p-4">
+  <div class="d-flex justify-content-center">
+    <h3 id="form-title">Inicia Sesión</h3>
+  </div>
+  <div class="d-flex justify-content-center form_container">
+    <form method="POST" action="">{% csrf_token %}
+      <div class="input-group mb-3">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-user"></i></span>
+        </div>
+        <input type="text" name="username" placeholder="Usuario" class="form-control">
+      </div>
+      <div class="input-group mb-2">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+        </div>
+          <input type="password" name="password" placeholder="Contraseña" class="form-control" >
+      </div>
+
+        <div class="d-flex justify-content-center mt-3 login_container">
+           <input class="btn login_btn" type="submit" value="Iniciar Sesion">
+           </div>
+    </form>
+  </div>
+ 
+  <div class="mt-4">
+    <div class="d-flex justify-content-center links mb-3">
+      No tenés una cuenta? <a href="/register/" class="ml-2">Registrate</a>
+    </div>
+      {% for message in messages %}
+  
+      <div class="container border mes" >
+        <p class="messages">{{message}}</p>
+      </div>
+  
+      {% endfor %}
+  </div>
+</div> -->
