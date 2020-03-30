@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block barlinks %}
+  <li class="nav-item">
+      <a class="nav-link text-muted active" href="/busqueda/">Mis Expedientes</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link text-muted" href="#">Equipo</a>
+  </li>
+
+  <!-- Dropdown -->
+  
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle   text-muted" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contacto</a>
+      <div class="dropdown-menu dropdown-primary font-weight-bold" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item text-muted" href="#">Acerca de Nosotros</a>
+          <a class="dropdown-item text-muted" href="#">Ayuda</a>
+          <a class="dropdown-item text-muted" href="#">Soporte</a>
+      </div>
+  </li>
+{% endblock %}
+
+{% block user %}
+  <li class="nav-item">
+    <span class="nav-link ml-auto">Hola {{request.user}}</span>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-user"></i>
+    </a>
+    <div class="dropdown-menu dropdown-primary dropdown-default"
+      aria-labelledby="navbarDropdownMenuLink-333">
+      <a class="dropdown-item" href="#">Mi cuenta</a>
+      <a class="dropdown-item" style="color: black;" href="/logout/">Cerrar Sesión</a>
+    </div>
+  </li>
+{% endblock %}
+
+
+{% block main %}
+  <br>
+  {% if expedientes %}
+
+    <br><br>
+        
+    <div class="mx-auto">
+      <table class="table table-hover mx-auto tabla">
+        <thead>
+          <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">AUTO</th>
+            <th scope="col">PARTES</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+          {% for exp in expedientes %}
+            <tr>
+            <!--<th scope="row">1</th>-->
+              <td>{{exp.numero}}</td>
+              <td>{{exp.nombre}}</td>
+              <td>-</td>
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      <br><br>
+      <p class="mx-auto" style="color: grey; text-align: right; margin-right: 10px; width: fit-content;"> {{expedientes|length}} resultados encontrados para {{expediente_buscado}}. </p>
+    </div>
+
+    {% else %}
+      <p>Expediente no encontrado</p>    
+    {% endif %}
+
+{% endblock %}
+ 
